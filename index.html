@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
-
+    <link rel="stylesheet" href="./css/tetris.css">
+    <link rel="icon" href="images/tetris block.png" type="image/png">
     <title>Tetris</title>
 </head>
 
@@ -17,7 +18,9 @@
     <div id="game-container">
 
         <div class="column" id="left">
-            <div id="game-window"></div>
+            <div id="game-window">
+                <canvas id="grid-canvas" width="200px" height="400px"></canvas>
+            </div>
         </div>
 
         <div class="column" id="right">
@@ -30,7 +33,7 @@
         <p>By Capser and Ludvig</p>
     </div>
 
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
 </body>
 
 </html>
