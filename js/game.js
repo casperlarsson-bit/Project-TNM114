@@ -15,7 +15,7 @@ class Game {
             for (let c = 0; c < this.grid.columns; ++c) {
                 // There is a block at current grid, draw it!
                 if (this.grid.cells[r][c]) {
-                    this.gridContext.fillStyle = 'red'
+                    this.gridContext.fillStyle = '#FF3213'
                     this.gridContext.fillRect(this.grid.blockSize * c, this.grid.blockSize * (r - 2), this.grid.blockSize, this.grid.blockSize)
                     this.gridContext.strokeStyle="#FFFFFF"
                     this.gridContext.strokeRect(this.grid.blockSize * c, this.grid.blockSize * (r - 2), this.grid.blockSize, this.grid.blockSize)

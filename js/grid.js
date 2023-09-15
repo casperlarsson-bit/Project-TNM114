@@ -4,8 +4,7 @@ class Grid {
         this.columns = columns
         this.blockSize = document.getElementById('grid-canvas').width / columns
 
-        // this.cells = Array.from({ length: rows }, () => Array(columns).fill(0))
-        this.cells = Array.from({ length: rows }, () => Array(columns).fill(Math.round(Math.random())))
+        this.cells = Array.from({ length: rows }, () => Array(columns).fill(0))
     }
 
     // Remove all cleared rows and move pieces above downwards
@@ -20,6 +19,15 @@ class Grid {
         }
 
         return true
+    }
+
+    // Set random cells to 1, for debugging only
+    setRandom() {
+        for (let row = 0; row < this.rows; ++row) {
+            for (let column = 0; column < this.columns; ++column) {
+                this.cells[row][column] = Math.round(Math.random())
+            }
+        }
     }
 }
 
