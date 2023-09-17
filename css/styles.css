@@ -64,10 +64,13 @@ body {
 }
 
 #footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: white;
     border-radius: 10px;
-    text-align: center;
     width: 80vw;
     height: 5vh;
     margin: 0 auto;
+    margin-top: 1vh;
 }
