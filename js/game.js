@@ -1,5 +1,6 @@
 import { Grid } from "./grid.js"
 import { Piece } from './piece.js'
+import { Queue } from "./queue.js"
 import { EMPTY_CELL, PIECE_INTERVAL, GRID_HEIGHT, GRID_WIDTH, BORDER_COLOR } from "./constants.js"
 
 class Game {
@@ -13,7 +14,7 @@ class Game {
 
         this.currentPiece = null
         this.pieceInterval = PIECE_INTERVAL
-        this.lastPieceMoveTime = 0 // The time when last piece was moved
+        this.lastPieceMoveTime = Date.now() // The time when last piece was moved
 
         this.addKeyboardListeners()
     }
