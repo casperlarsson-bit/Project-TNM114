@@ -1,3 +1,5 @@
+import { EMPTY_CELL } from "./constants.js"
+
 class Piece {
     constructor(shape) {
         this.shape = shape
@@ -5,61 +7,55 @@ class Piece {
         this.column = 0
     }
 
-    canMoveLeft(grid) {
+    isValidMove(direction, grid) {
+        const numRows = this.shape.length
+        const numColumns = this.shape[0].length
+
         // Iterate over the shape of the piece
-        for (let row = 0; row < this.shape.length; ++row) {
-            for (let column = 0; column < this.shape[row].length; ++column) {
+        for (let row = 0; row < numRows; ++row) {
+            for (let column = 0; column < numColumns; ++column) {
                 // If the current cell in the piece shape is empty, skip it
-                if (this.shape[row][column] === 0) continue
+                if (this.shape[row][column] === EMPTY_CELL) continue
 
                 // Calculate the target row and column for the cell after moving down
-                const targetRow = this.row + row
-                const targetColumn = this.column + column - 1
+                let targetRow = this.row + row
+                let targetColumn = this.column + column
+
+                // Offset depending on the move
+                if (direction === 'left') {
+                    targetColumn--
+                } else if (direction === 'right') {
+                    targetColumn++
+                } else if (direction === 'down') {
+                    targetRow++
+                }
 
                 // Check if the target cell is out of bounds or occupied by another piece
-                if (targetRow >= grid.rows || grid.cells[targetRow][targetColumn] !== 0) return false
+                if (
+                    targetRow < 0 ||
+                    targetColumn < 0 ||
+                    targetRow >= grid.rows ||
+                    targetColumn >= grid.columns ||
+                    grid.cells[targetRow][targetColumn] !== EMPTY_CELL
+                ) {
+                    return false
+                }
             }
         }
 
-        return true // The piece can move left
+        return true
+    }
+
+    canMoveLeft(grid) {
+        return this.isValidMove('left', grid)
     }
 
     canMoveRight(grid) {
-        // Iterate over the shape of the piece
-        for (let row = 0; row < this.shape.length; ++row) {
-            for (let column = 0; column < this.shape[row].length; ++column) {
-                // If the current cell in the piece shape is empty, skip it
-                if (this.shape[row][column] === 0) continue
-
-                // Calculate the target row and column for the cell after moving down
-                const targetRow = this.row + row
-                const targetColumn = this.column + column + 1
-
-                // Check if the target cell is out of bounds or occupied by another piece
-                if (targetRow >= grid.rows || grid.cells[targetRow][targetColumn] !== 0) return false
-            }
-        }
-
-        return true // The piece can move right
+        return this.isValidMove('right', grid)
     }
 
     canMoveDown(grid) {
-        // Iterate over the shape of the piece
-        for (let row = 0; row < this.shape.length; ++row) {
-            for (let column = 0; column < this.shape[row].length; ++column) {
-                // If the current cell in the piece shape is empty, skip it
-                if (this.shape[row][column] === 0) continue
-
-                // Calculate the target row and column for the cell after moving down
-                const targetRow = this.row + row + 1
-                const targetColumn = this.column + column
-
-                // Check if the target cell is out of bounds or occupied by another piece
-                if (targetRow >= grid.rows || grid.cells[targetRow][targetColumn] !== 0) return false
-            }
-        }
-
-        return true // The piece can move down
+        return this.isValidMove('down', grid)
     }
 
     isValidRotation(newShape, grid) {
@@ -76,7 +72,7 @@ class Piece {
         // Check if the rotated shape overlaps with other pieces
         for (let row = 0; row < newShape.length; ++row) {
             for (let column = 0; column < newShape[row].length; ++column) {
-                if (newShape[row][column] !== 0 && grid.cells[this.row + row][this.column + column] !== 0) {
+                if (newShape[row][column] !== EMPTY_CELL && grid.cells[this.row + row][this.column + column] !== EMPTY_CELL) {
                     return false
                 }
             }
@@ -99,26 +95,21 @@ class Piece {
 
     rotate(grid) {
         // Create a copy of the current shape to perform the rotation on
-        const newShape = [...this.shape.map(row => [...row])]
-        const size = this.shape.length
+        const newSize = this.shape.length
+        const newShape = new Array(newSize).fill(0).map(() => new Array(newSize).fill(0))
 
-        // Perform the rotation (clockwise for this example)
-        for (let i = 0; i < size / 2; i++) {
-            for (let j = i; j < size - i - 1; j++) {
-                const temp = newShape[i][j]
-                newShape[i][j] = newShape[size - 1 - j][i]
-                newShape[size - 1 - j][i] = newShape[size - 1 - i][size - 1 - j]
-                newShape[size - 1 - i][size - 1 - j] = newShape[j][size - 1 - i]
-                newShape[j][size - 1 - i] = temp
+        // Perform closkwise rotation 
+        for (let i = 0; i < newSize; i++) {
+            for (let j = 0; j < newSize; j++) {
+                newShape[i][j] = this.shape[newSize - j - 1][i]
             }
         }
 
         // Check if the rotated shape is valid (doesn't go out of bounds or overlap with other pieces)
         if (this.isValidRotation(newShape, grid)) {
-            this.shape = newShape // Update the shape if the rotation is valid
+            this.shape = newShape
         }
     }
-
 }
 
 export { Piece }

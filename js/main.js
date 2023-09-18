@@ -3,11 +3,8 @@ import { init } from "./setup.js"
 
 const game = new Game()
 
-// game.grid.setRandom()
-
 game.generatePiece()
 function gameLoop() {
-    //game.grid.clearRows()
     game.updateScore()
 
     const currentTime = Date.now()

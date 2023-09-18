@@ -1,10 +1,21 @@
+import { EMPTY_CELL } from "./constants.js"
+
 class Grid {
     constructor(rows, columns) {
         this.rows = rows
         this.columns = columns
-        this.blockSize = document.getElementById('grid-canvas').width / columns
+        this.blockSize = this.calculateBlockSize()
+        this.cells = this.initializeCells()
+    }
 
-        this.cells = Array.from({ length: rows }, () => Array(columns).fill(0))
+    // Calculate block size based on canvas size and columns
+    calculateBlockSize() {
+        return document.getElementById('grid-canvas').width / this.columns
+    }
+
+    // Initialize grid cells with empty values
+    initializeCells() {
+        return Array.from({ length: this.rows }, () => Array(this.columns).fill(EMPTY_CELL))
     }
 
     // Remove all cleared rows and move pieces above downwards
@@ -15,13 +26,13 @@ class Grid {
             if (this.isRowComplete(row)) {
                 ++distance
                 for (let column = 0; column < this.columns; ++column) {
-                    this.cells[row][column] = 0
+                    this.cells[row][column] = EMPTY_CELL
                 }
             }
             else if (distance > 0) {
                 for (let column = 0; column < this.columns; ++column) {
                     this.cells[row + distance][column] = this.cells[row][column]
-                    this.cells[row][column] = 0
+                    this.cells[row][column] = EMPTY_CELL
                 }
             }
         }
@@ -30,23 +41,10 @@ class Grid {
     // Return true if the current row is complete, otherwise false
     isRowComplete(row) {
         for (let column = 0; column < this.columns; ++column) {
-            if (this.cells[row][column] === 0) return false
+            if (this.cells[row][column] === EMPTY_CELL) return false
         }
 
         return true
-    }
-
-    // Set random cells to 1, for debugging only
-    setRandom() {
-        for (let row = 0; row < this.rows; ++row) {
-            for (let column = 0; column < this.columns; ++column) {
-                this.cells[row][column] = Math.round(Math.random())
-            }
-        }
-
-        for (let column = 0; column < this.columns; ++column) {
-            this.cells[19][column] = 1
-        }
     }
 }
 

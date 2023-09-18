@@ -1,10 +1,6 @@
-const PIECE_INTERVAL = 500 // Interval time for piece movement
-const GRID_HEIGHT = 20 // Height of grid in blocks
-const GRID_WIDTH = 10 // Width of grid in blocks
-const BORDER_COLOR = "#FFFFFF"
-
 import { Grid } from "./grid.js"
 import { Piece } from './piece.js'
+import { EMPTY_CELL, PIECE_INTERVAL, GRID_HEIGHT, GRID_WIDTH, BORDER_COLOR } from "./constants.js"
 
 class Game {
     constructor() {
@@ -22,6 +18,7 @@ class Game {
         this.addKeyboardListeners()
     }
 
+    // Clear the canvas and redraw the grid with the current state of cells
     redrawCanvas() {
         if (!this.gridContext) throw new ReferenceError('No grid context exists')
 
@@ -40,10 +37,12 @@ class Game {
         }
     }
 
+    // Update the displayed score on the page
     updateScore() {
         this.scoreContainer.innerHTML = this.score
     }
 
+    // Move the current piece in the specified direction
     moveCurrentPiece(direction) {
         if (!this.currentPiece) return
 
@@ -99,7 +98,7 @@ class Game {
         for (let row = 0; row < this.currentPiece.shape.length; ++row) {
             for (let column = 0; column < this.currentPiece.shape[row].length; ++column) {
                 // If the current cell in the piece shape is empty, skip it
-                if (this.currentPiece.shape[row][column] === 0) continue
+                if (this.currentPiece.shape[row][column] === EMPTY_CELL) continue
 
                 // Calculate the grid cell coordinates for the piece cell
                 const gridRow = this.currentPiece.row + row
@@ -112,7 +111,7 @@ class Game {
     }
 
     clearPieceCells() {
-        this.updateGridFromPiece(0) // Clear cells by setting them to 0
+        this.updateGridFromPiece(EMPTY_CELL) // Clear cells by setting them to 0
     }
 
     setPieceCells() {
@@ -130,18 +129,22 @@ class Game {
         if (event.key === 'ArrowLeft') {
             // Move the current piece left
             this.moveCurrentPieceLeft()
-
-        } else if (event.key === 'ArrowRight') {
+        }
+        else if (event.key === 'ArrowRight') {
             // Move the current piece right
             this.moveCurrentPieceRight()
-        } else if (event.key === 'ArrowUp' || event.key === 'z') {
+        }
+        else if (event.key === 'ArrowUp' || event.key === 'z') {
             // Rotate the current piece
             this.rotateCurrentPieceClockwise()
 
-        } else if (event.key === 'ArrowDown') {
+        }
+        else if (event.key === 'ArrowDown') {
             // Move the current piece down faster
-
-        } else if (event.key === 'Space') {
+            this.moveCurrentPieceDown()
+            this.lastPieceMoveTime = Date.now()
+        }
+        else if (event.key === 'Space') {
             // Move the current piece to the bottom
 
         }
@@ -152,11 +155,13 @@ class Game {
         document.addEventListener('keydown', this.handleKeyPress.bind(this))
     }
 
+    // Generate a random piece and set it as the current piece
     generatePiece() {
         this.currentPiece = this.pieceByIndex(getRandomInt(0, 6))
         // @TODO Create a Queue class which stores current and next piece
     }
 
+    // Get a piece based on the index
     pieceByIndex(index) {
         let piece
 
