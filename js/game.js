@@ -67,6 +67,9 @@ class Game {
                     this.generatePiece()
                 }
                 break
+            case 'rotate clockwise':
+                this.currentPiece.rotate(this.grid)
+                break
             default:
                 break
         }
@@ -85,6 +88,10 @@ class Game {
 
     moveCurrentPieceRight() {
         this.moveCurrentPiece('right')
+    }
+
+    rotateCurrentPieceClockwise() {
+        this.moveCurrentPiece('rotate clockwise')
     }
 
     updateGridFromPiece(value) {
@@ -129,7 +136,7 @@ class Game {
             this.moveCurrentPieceRight()
         } else if (event.key === 'ArrowUp' || event.key === 'z') {
             // Rotate the current piece
-
+            this.rotateCurrentPieceClockwise()
 
         } else if (event.key === 'ArrowDown') {
             // Move the current piece down faster
