@@ -5,6 +5,7 @@ class Piece {
         this.shape = shape
         this.row = 0
         this.column = 0
+        this.color = 'blue'
     }
 
     isValidMove(direction, grid) {

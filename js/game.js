@@ -61,7 +61,7 @@ class Game {
             for (let column = 0; column < this.grid.columns; ++column) {
                 // There is a block at current grid, draw it!
                 if (this.grid.cells[row][column]) {
-                    this.gridContext.fillStyle = '#FF3213' // Will change later
+                    this.gridContext.fillStyle = this.grid.cells[row][column] //'#FF3213' // Will change later
                     this.gridContext.fillRect(this.grid.blockSize * column, this.grid.blockSize * row, this.grid.blockSize, this.grid.blockSize)
                     this.gridContext.strokeStyle = BORDER_COLOR
                     this.gridContext.strokeRect(this.grid.blockSize * column, this.grid.blockSize * row, this.grid.blockSize, this.grid.blockSize)
@@ -148,7 +148,7 @@ class Game {
     }
 
     setPieceCells() {
-        this.updateGridFromPiece(1) // Set cells by setting them to 1
+        this.updateGridFromPiece(this.currentPiece.color) // Set cells by setting them to 1
     }
 
     lockCurrentPiece() {
@@ -208,6 +208,7 @@ class Game {
                     [1, 1],
                     [1, 1]
                 ])
+                piece.color = '#F0F000'
                 break
             case 1: // J
                 piece = new Piece([
@@ -215,6 +216,7 @@ class Game {
                     [1, 1, 1],
                     [0, 0, 0],
                 ])
+                piece.color = '#0000F0'
                 break
             case 2: // L
                 piece = new Piece([
@@ -222,6 +224,7 @@ class Game {
                     [1, 1, 1],
                     [0, 0, 0],
                 ])
+                piece.color = '#F0A000'
                 break
             case 3: // Z
                 piece = new Piece([
@@ -229,6 +232,7 @@ class Game {
                     [0, 1, 1],
                     [0, 0, 0],
                 ])
+                piece.color = '#F00000'
                 break
             case 4: // S
                 piece = new Piece([
@@ -236,6 +240,7 @@ class Game {
                     [1, 1, 0],
                     [0, 0, 0],
                 ])
+                piece.color = '#00F000'
                 break
             case 5: // T
                 piece = new Piece([
@@ -243,6 +248,7 @@ class Game {
                     [1, 1, 1],
                     [0, 0, 0],
                 ])
+                piece.color = '#A000F0'
                 break
             case 6: // I
                 piece = new Piece([
@@ -251,8 +257,8 @@ class Game {
                     [0, 0, 0, 0],
                     [0, 0, 0, 0],
                 ])
+                piece.color = '#00F0F0'
                 break
-
             default:
                 throw new RangeError('Generated piece index out of range.')
         }
