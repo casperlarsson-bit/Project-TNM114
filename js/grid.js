@@ -36,6 +36,8 @@ class Grid {
                 }
             }
         }
+
+        return this.calculateScore(distance)
     }
 
     // Return true if the current row is complete, otherwise false
@@ -45,6 +47,11 @@ class Grid {
         }
 
         return true
+    }
+
+    calculateScore(numClearedLevels) {
+        const score = [0, 100, 300, 500, 800]
+        return score[numClearedLevels] || 0
     }
 }
 

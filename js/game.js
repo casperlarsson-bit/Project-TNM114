@@ -1,18 +1,17 @@
-import { Grid } from "./grid.js"
+import { Grid } from './grid.js'
 import { Piece } from './piece.js'
-import { Queue } from "./queue.js"
-//import { gameLoop } from "./main.js"
-import { EMPTY_CELL, PIECE_INTERVAL, GRID_HEIGHT, GRID_WIDTH, BORDER_COLOR } from "./constants.js"
+import { GameRenderer } from './gameRenderer.js'
+import { Queue } from './queue.js'
+import { EMPTY_CELL, PIECE_INTERVAL, GRID_HEIGHT, GRID_WIDTH, BORDER_COLOR } from './constants.js'
 
 class Game {
     constructor() {
-        this.gridCanvas = document.getElementById('grid-canvas')
-        this.gridContext = this.gridCanvas.getContext('2d')
-        this.scoreContainer = document.getElementById("score")
-
         this.grid = new Grid(GRID_HEIGHT, GRID_WIDTH)
+        this.gameRenderer = new GameRenderer(this.grid)        
+
         this.score = 0
 
+        this.pieces = new Queue()
         this.currentPiece = null
         this.pieceInterval = PIECE_INTERVAL
         this.lastPieceMoveTime = Date.now() // The time when last piece was moved
@@ -33,8 +32,8 @@ class Game {
                     this.lastPieceMoveTime = currentTime
                 }
 
-                this.updateScore()
-                this.redrawCanvas()
+                this.gameRenderer.updateScore(this.score)
+                this.gameRenderer.redrawCanvas()
 
                 this.animationFrameId = requestAnimationFrame(gameLoop)
             }
@@ -49,30 +48,6 @@ class Game {
             console.log('Game Over')
             cancelAnimationFrame(this.animationFrameId) // Stop the game loop
         }
-    }
-
-    // Clear the canvas and redraw the grid with the current state of cells
-    redrawCanvas() {
-        if (!this.gridContext) throw new ReferenceError('No grid context exists')
-
-        this.gridContext.clearRect(0, 0, this.gridCanvas.width, this.gridCanvas.height)
-
-        for (let row = 0; row < this.grid.rows; ++row) {
-            for (let column = 0; column < this.grid.columns; ++column) {
-                // There is a block at current grid, draw it!
-                if (this.grid.cells[row][column]) {
-                    this.gridContext.fillStyle = this.grid.cells[row][column] //'#FF3213' // Will change later
-                    this.gridContext.fillRect(this.grid.blockSize * column, this.grid.blockSize * row, this.grid.blockSize, this.grid.blockSize)
-                    this.gridContext.strokeStyle = BORDER_COLOR
-                    this.gridContext.strokeRect(this.grid.blockSize * column, this.grid.blockSize * row, this.grid.blockSize, this.grid.blockSize)
-                }
-            }
-        }
-    }
-
-    // Update the displayed score on the page
-    updateScore() {
-        this.scoreContainer.innerHTML = this.score
     }
 
     // Move the current piece in the specified direction
@@ -91,13 +66,13 @@ class Game {
                 this.currentPiece.moveRight(this.grid)
                 break
             case 'down':
-                this.currentPiece.moveDown(this.grid)
-
+                
                 // Check for collision or locking condition
                 if (!this.currentPiece.canMoveDown(this.grid)) {
                     this.lockCurrentPiece()
                     this.generatePiece()
                 }
+                this.currentPiece.moveDown(this.grid)
                 break
             case 'rotate clockwise':
                 this.currentPiece.rotate(this.grid)
@@ -148,12 +123,12 @@ class Game {
     }
 
     setPieceCells() {
-        this.updateGridFromPiece(this.currentPiece.color) // Set cells by setting them to 1
+        this.updateGridFromPiece(this.currentPiece.color) // Set cells by setting them to the color of the piece
     }
 
     lockCurrentPiece() {
         this.setPieceCells() // Locking the piece essentially sets the cells to 1
-        this.grid.clearRows()
+        this.score += this.grid.clearRows()
     }
 
     // Define the event listener for handling keyboard input
