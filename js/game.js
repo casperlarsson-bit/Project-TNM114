@@ -1,6 +1,7 @@
 import { Grid } from "./grid.js"
 import { Piece } from './piece.js'
 import { Queue } from "./queue.js"
+//import { gameLoop } from "./main.js"
 import { EMPTY_CELL, PIECE_INTERVAL, GRID_HEIGHT, GRID_WIDTH, BORDER_COLOR } from "./constants.js"
 
 class Game {
@@ -17,6 +18,37 @@ class Game {
         this.lastPieceMoveTime = Date.now() // The time when last piece was moved
 
         this.addKeyboardListeners()
+        this.animationFrameId = null
+        this.isGameOver = false // Game over flag
+    }
+
+    startGameLoop() {
+        this.generatePiece()
+
+        const gameLoop = () => {
+            if (!this.isGameOver) {
+                const currentTime = Date.now()
+                if (currentTime - this.lastPieceMoveTime >= this.pieceInterval) {
+                    this.moveCurrentPieceDown()
+                    this.lastPieceMoveTime = currentTime
+                }
+
+                this.updateScore()
+                this.redrawCanvas()
+
+                this.animationFrameId = requestAnimationFrame(gameLoop)
+            }
+        }
+
+        this.animationFrameId = requestAnimationFrame(gameLoop)
+    }
+
+    gameOver() {
+        if (!this.isGameOver) {
+            this.isGameOver = true
+            console.log('Game Over')
+            cancelAnimationFrame(this.animationFrameId) // Stop the game loop
+        }
     }
 
     // Clear the canvas and redraw the grid with the current state of cells
@@ -160,6 +192,10 @@ class Game {
     generatePiece() {
         this.currentPiece = this.pieceByIndex(getRandomInt(0, 6))
         // @TODO Create a Queue class which stores current and next piece
+
+        if (!this.currentPiece.canMoveDown(this.grid)) {
+            this.gameOver()
+        }
     }
 
     // Get a piece based on the index
@@ -226,6 +262,7 @@ class Game {
         return piece
     }
 }
+
 
 // Get a random integer between min (inclusive) and max (inclusive)
 function getRandomInt(min, max) {
