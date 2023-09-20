@@ -3,3 +3,11 @@
     width: 100%;
     height: 100%;
 }
+
+#next-piece-canvas {
+    background-color: antiquewhite;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    margin: auto auto;
+}

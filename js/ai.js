@@ -14,7 +14,7 @@ class Ai {
             grid.cells[0][column]
         }
 
-
+        return
         // Temp
         console.log('Height ' + this.calculateAggregatedHeight(grid))
         console.log('Lines ' + this.calculateNumCompleteLines(grid))

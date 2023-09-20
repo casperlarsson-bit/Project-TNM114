@@ -1,8 +1,7 @@
 import { Game } from "./game.js"
 import { init } from "./setup.js"
 
-const game = new Game()
-
 init()
+
+const game = new Game()
 game.startGameLoop()
-//console.log(game.grid.cells)

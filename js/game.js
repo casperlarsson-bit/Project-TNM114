@@ -8,11 +8,12 @@ import { EMPTY_CELL, PIECE_INTERVAL, GRID_HEIGHT, GRID_WIDTH, BORDER_COLOR } fro
 class Game {
     constructor() {
         this.grid = new Grid(GRID_HEIGHT, GRID_WIDTH)
-        this.gameRenderer = new GameRenderer(this.grid)        
+        this.gameRenderer = new GameRenderer(this.grid)
 
         this.score = 0
 
         this.pieces = new Queue()
+        this.pieces.enqueue(this.pieceByIndex(getRandomInt(0, 6)))
         this.currentPiece = null
         this.pieceInterval = PIECE_INTERVAL
         this.lastPieceMoveTime = Date.now() // The time when last piece was moved
@@ -28,7 +29,6 @@ class Game {
         this.generatePiece()
 
         const gameLoop = () => {
-            //console.log(this.grid.cells)
             if (!this.isGameOver) {
                 const currentTime = Date.now()
                 if (currentTime - this.lastPieceMoveTime >= this.pieceInterval) {
@@ -70,7 +70,7 @@ class Game {
                 this.currentPiece.moveRight(this.grid)
                 break
             case 'down':
-                
+
                 // Check for collision or locking condition
                 if (!this.currentPiece.canMoveDown(this.grid)) {
                     this.lockCurrentPiece()
@@ -161,7 +161,6 @@ class Game {
         }
         else if (event.key === 'Space') {
             // Move the current piece to the bottom
-
         }
     }
 
@@ -172,8 +171,18 @@ class Game {
 
     // Generate a random piece and set it as the current piece
     generatePiece() {
-        this.currentPiece = this.pieceByIndex(getRandomInt(0, 6))
+        /*this.currentPiece = this.pieceByIndex(getRandomInt(0, 6))
         // @TODO Create a Queue class which stores current and next piece
+
+        if (!this.currentPiece.canMoveDown(this.grid)) {
+            this.gameOver()
+        }
+        
+        return this.currentPiece*/
+
+        this.currentPiece = this.pieces.dequeue()
+        this.pieces.enqueue(this.pieceByIndex(getRandomInt(0, 6)))
+        this.gameRenderer.redrawNextPiece(this.pieces.peek())
 
         if (!this.currentPiece.canMoveDown(this.grid)) {
             this.gameOver()

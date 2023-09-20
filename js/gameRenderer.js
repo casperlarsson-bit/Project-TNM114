@@ -5,6 +5,9 @@ class GameRenderer {
         this.gridCanvas = document.getElementById('grid-canvas')
         this.gridContext = this.gridCanvas.getContext('2d')
 
+        this.nextPieceCanvas = document.getElementById('next-piece-canvas')
+        this.nextPieceContext = this.nextPieceCanvas.getContext('2d')
+
         this.scoreContainer = document.getElementById('score')
 
         this.grid = grid
@@ -27,6 +30,15 @@ class GameRenderer {
                 }
             }
         }
+    }
+
+    redrawNextPiece(piece) {
+        this.nextPieceContext.clearRect(0, 0, this.nextPieceCanvas.width, this.nextPieceCanvas.height)
+
+        this.nextPieceContext.fillStyle = piece.color
+        this.nextPieceContext.fillRect(this.grid.blockSize * 1, this.grid.blockSize * 1, this.grid.blockSize, this.grid.blockSize)
+        this.nextPieceContext.strokeStyle = BORDER_COLOR
+        this.nextPieceContext.strokeRect(this.grid.blockSize * 1, this.grid.blockSize * 1, this.grid.blockSize, this.grid.blockSize)
     }
 
     // Update the displayed score on the page
