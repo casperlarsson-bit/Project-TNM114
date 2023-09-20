@@ -2,6 +2,7 @@ import { Grid } from './grid.js'
 import { Piece } from './piece.js'
 import { GameRenderer } from './gameRenderer.js'
 import { Queue } from './queue.js'
+import { Ai } from './ai.js'
 import { EMPTY_CELL, PIECE_INTERVAL, GRID_HEIGHT, GRID_WIDTH, BORDER_COLOR } from './constants.js'
 
 class Game {
@@ -19,12 +20,15 @@ class Game {
         this.addKeyboardListeners()
         this.animationFrameId = null
         this.isGameOver = false // Game over flag
+
+        this.ai = new Ai()
     }
 
     startGameLoop() {
         this.generatePiece()
 
         const gameLoop = () => {
+            //console.log(this.grid.cells)
             if (!this.isGameOver) {
                 const currentTime = Date.now()
                 if (currentTime - this.lastPieceMoveTime >= this.pieceInterval) {
@@ -128,7 +132,10 @@ class Game {
 
     lockCurrentPiece() {
         this.setPieceCells() // Locking the piece essentially sets the cells to 1
+        // Temp
+        this.ai.getBestScore(this.grid)
         this.score += this.grid.clearRows()
+
     }
 
     // Define the event listener for handling keyboard input
