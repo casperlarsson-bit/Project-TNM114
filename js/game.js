@@ -159,8 +159,15 @@ class Game {
             this.moveCurrentPieceDown()
             this.lastPieceMoveTime = Date.now()
         }
-        else if (event.key === 'Space') {
+        else if (event.key === ' ') {
             // Move the current piece to the bottom
+            this.clearPieceCells()
+            
+            while (this.currentPiece.canMoveDown(this.grid)) {
+                this.moveCurrentPieceDown()
+                this.lastPieceMoveTime = 0
+                this.clearPieceCells()
+            }
         }
     }
 
