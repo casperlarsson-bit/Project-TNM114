@@ -1,9 +1,9 @@
 class Ai {
     constructor() {
-        this.Height = -0.510066
-        this.Lines = 0.760666
-        this.Holes = -0.35663
-        this.Bumpiness = -0.184483
+        this.height = -0.510066
+        this.lines = 0.760666
+        this.holes = -0.35663
+        this.bumpiness = -0.184483
     }
 
     getBestScore(grid, currentPiece) {
@@ -12,14 +12,14 @@ class Ai {
         while (currentPiece.moveLeft(grid)) { }
 
         // For each column, and rotation test final position
-        while (currentPiece.moveRight(grid)) {
+        /*while (currentPiece.moveRight(grid)) {
             for (let rot = 0; rot < 4; ++rot) {
                 currentPiece.rotate(grid)
 
-                while (currentPiece.moveDown(grid)) {}
+                while (currentPiece.moveDown(grid)) { }
                 const gridCopy = grid.clone()
                 gridCopy.addPiece(currentPiece)
-                
+
                 const currentHeuritic = this.calculateHeuristics(gridCopy)
                 if (currentHeuritic > score) {
                     score = currentHeuritic
@@ -28,16 +28,38 @@ class Ai {
                 }
 
             }
+        }*/
+
+        for (let rot = 0; rot < 4; ++rot) {
+            const workingPiece = currentPiece.clone()
+            for (let i = 0; i < rot; ++i) {
+                workingPiece.rotate(grid)
+            }
+
+            while (workingPiece.moveLeft(grid)) { }
+
+            do {
+                const anotherPiece = workingPiece.clone()
+                while (anotherPiece.moveDown(grid)) { }
+                const gridCopy = grid.clone()
+                gridCopy.addPiece(anotherPiece)
+
+                const currentHeuristic = this.calculateHeuristics(gridCopy)
+                if (currentHeuristic > score) {
+                    score = currentHeuristic
+                    bestPiece = workingPiece.clone()
+                }
+            } while (workingPiece.moveRight(grid))
         }
 
         return bestPiece
     }
 
     calculateHeuristics(grid) {
-        return this.Height * this.calculateAggregatedHeight(grid)
-            + this.Lines * this.calculateNumCompleteLines(grid)
-            + this.Holes * this.calculateNumHoles(grid)
-            + this.Bumpiness * this.calculateBumpiness(grid)
+        return this.height * this.calculateAggregatedHeight(grid)
+            + this.lines * this.calculateNumCompleteLines(grid)
+            + this.holes * this.calculateNumHoles(grid)
+            + this.bumpiness * this.calculateBumpiness(grid)
     }
 
     // Calculate the aggregated height of all columns in the grid

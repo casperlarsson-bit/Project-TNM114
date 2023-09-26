@@ -21,7 +21,7 @@ class Grid {
     clone() {
         const grid = new Grid(this.rows, this.columns)
         grid.blockSize = this.calculateBlockSize()
-        grid.cells = this.cells.slice(0)
+        grid.cells = structuredClone(this.cells)
 
         return grid
     }

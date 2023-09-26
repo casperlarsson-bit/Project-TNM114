@@ -162,7 +162,7 @@ class Game {
         else if (event.key === ' ') {
             // Move the current piece to the bottom
             this.clearPieceCells()
-            
+
             while (this.currentPiece.canMoveDown(this.grid)) {
                 this.moveCurrentPieceDown()
                 this.lastPieceMoveTime = 0
@@ -186,7 +186,10 @@ class Game {
             this.gameOver()
         }
 
-        if (this.isAiActive) this.currentPiece = this.ai.getBestScore(this.grid, this.currentPiece)
+        if (this.isAiActive) {
+            this.currentPiece = this.ai.getBestScore(this.grid, this.currentPiece)
+            this.pieceInterval = 1
+        }
     }
 
     // Get a piece based on the index

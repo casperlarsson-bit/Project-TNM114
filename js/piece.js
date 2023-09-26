@@ -9,7 +9,7 @@ class Piece {
     }
 
     clone() {
-        const shape = this.shape.slice(0)
+        const shape = structuredClone(this.shape)
         
         const piece = new Piece(shape)
         piece.row = this.row
