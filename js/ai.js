@@ -8,20 +8,29 @@ class Ai {
 
     getBestScore(grid, currentPiece) {
         let score = Number.MIN_SAFE_INTEGER
+        let bestPiece
+        while (currentPiece.moveLeft(grid)) { }
 
         // For each column, and rotation test final position
-        for (let column = 0; column < grid.columns; ++column) {
-            grid.cells[0][column]
+        while (currentPiece.moveRight(grid)) {
+            for (let rot = 0; rot < 4; ++rot) {
+                currentPiece.rotate(grid)
+
+                while (currentPiece.moveDown(grid)) {}
+                const gridCopy = grid.clone()
+                gridCopy.addPiece(currentPiece)
+                
+                const currentHeuritic = this.calculateHeuristics(gridCopy)
+                if (currentHeuritic > score) {
+                    score = currentHeuritic
+                    bestPiece = currentPiece.clone()
+                    bestPiece.row = 0
+                }
+
+            }
         }
 
-        return
-        // Temp
-        console.log('Height ' + this.calculateAggregatedHeight(grid))
-        console.log('Lines ' + this.calculateNumCompleteLines(grid))
-        console.log('Holes ' + this.calculateNumHoles(grid))
-        console.log('Bump ' + this.calculateBumpiness(grid))
-
-        console.log(this.calculateHeuristics(grid))
+        return bestPiece
     }
 
     calculateHeuristics(grid) {

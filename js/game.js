@@ -22,6 +22,7 @@ class Game {
         this.animationFrameId = null
         this.isGameOver = false // Game over flag
 
+        this.isAiActive = true
         this.ai = new Ai()
     }
 
@@ -133,7 +134,6 @@ class Game {
     lockCurrentPiece() {
         this.setPieceCells() // Locking the piece essentially sets the cells to 1
         // Temp
-        this.ai.getBestScore(this.grid)
         this.score += this.grid.clearRows()
 
     }
@@ -178,15 +178,6 @@ class Game {
 
     // Generate a random piece and set it as the current piece
     generatePiece() {
-        /*this.currentPiece = this.pieceByIndex(getRandomInt(0, 6))
-        // @TODO Create a Queue class which stores current and next piece
-
-        if (!this.currentPiece.canMoveDown(this.grid)) {
-            this.gameOver()
-        }
-        
-        return this.currentPiece*/
-
         this.currentPiece = this.pieces.dequeue()
         this.pieces.enqueue(this.pieceByIndex(getRandomInt(0, 6)))
         this.gameRenderer.redrawNextPiece(this.pieces.peek())
@@ -194,6 +185,8 @@ class Game {
         if (!this.currentPiece.canMoveDown(this.grid)) {
             this.gameOver()
         }
+
+        if (this.isAiActive) this.currentPiece = this.ai.getBestScore(this.grid, this.currentPiece)
     }
 
     // Get a piece based on the index

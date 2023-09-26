@@ -8,6 +8,17 @@ class Piece {
         this.color = 'blue'
     }
 
+    clone() {
+        const shape = this.shape.slice(0)
+        
+        const piece = new Piece(shape)
+        piece.row = this.row
+        piece.column = this.column
+        piece.color = this.color
+
+        return piece
+    }
+
     isValidMove(direction, grid) {
         const numRows = this.shape.length
         const numColumns = this.shape[0].length
@@ -83,15 +94,24 @@ class Piece {
     }
 
     moveLeft(grid) {
-        if (this.canMoveLeft(grid)) --this.column
+        if (this.canMoveLeft(grid)) {
+            --this.column
+            return true
+        }
     }
 
     moveRight(grid) {
-        if (this.canMoveRight(grid)) ++this.column
+        if (this.canMoveRight(grid)) {
+            ++this.column
+            return true
+        }
     }
 
     moveDown(grid) {
-        if (this.canMoveDown(grid)) ++this.row
+        if (this.canMoveDown(grid)) {
+            ++this.row
+            return true
+        }
     }
 
     rotate(grid) {
@@ -109,6 +129,7 @@ class Piece {
         // Check if the rotated shape is valid (doesn't go out of bounds or overlap with other pieces)
         if (this.isValidRotation(newShape, grid)) {
             this.shape = newShape
+            return true
         }
     }
 }

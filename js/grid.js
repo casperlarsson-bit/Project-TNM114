@@ -18,6 +18,14 @@ class Grid {
         return Array.from({ length: this.rows }, () => Array(this.columns).fill(EMPTY_CELL))
     }
 
+    clone() {
+        const grid = new Grid(this.rows, this.columns)
+        grid.blockSize = this.calculateBlockSize()
+        grid.cells = this.cells.slice(0)
+
+        return grid
+    }
+
     // Remove all cleared rows and move pieces above downwards
     clearRows() {
         let distance = 0
@@ -52,6 +60,23 @@ class Grid {
     calculateScore(numClearedLevels) {
         const score = [0, 100, 300, 500, 800]
         return score[numClearedLevels] || 0
+    }
+
+    addPiece(piece) {
+        // Iterate over the shape of the piece
+        for (let row = 0; row < piece.shape.length; ++row) {
+            for (let column = 0; column < piece.shape[row].length; ++column) {
+                // If the current cell in the piece shape is empty, skip it
+                if (piece.shape[row][column] === EMPTY_CELL) continue
+
+                // Calculate the grid cell coordinates for the piece cell
+                const gridRow = piece.row + row
+                const gridColumn = piece.column + column
+
+                // Set the value for the cell in the grid
+                this.cells[gridRow][gridColumn] = piece.color
+            }
+        }
     }
 }
 
