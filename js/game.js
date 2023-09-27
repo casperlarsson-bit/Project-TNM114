@@ -178,18 +178,23 @@ class Game {
 
     // Generate a random piece and set it as the current piece
     generatePiece() {
-        this.currentPiece = this.pieces.dequeue()
         this.pieces.enqueue(this.pieceByIndex(getRandomInt(0, 6)))
+
+        if (this.isAiActive) {
+            this.currentPiece = this.ai.getBestMove(this.grid, this.pieces, this.pieces.head).piece
+            this.pieces.dequeue()
+            this.pieceInterval = 1
+        }
+        else {
+            this.currentPiece = this.pieces.dequeue()
+        }
+
         this.gameRenderer.redrawNextPiece(this.pieces.peek())
 
         if (!this.currentPiece.canMoveDown(this.grid)) {
             this.gameOver()
         }
 
-        if (this.isAiActive) {
-            this.currentPiece = this.ai.getBestScore(this.grid, this.currentPiece)
-            this.pieceInterval = 1
-        }
     }
 
     // Get a piece based on the index

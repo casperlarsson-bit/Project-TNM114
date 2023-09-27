@@ -58,7 +58,7 @@ class GameRenderer {
 
     // Update the displayed score on the page
     updateScore(score) {
-        this.scoreContainer.innerHTML = 'Score: ' + score
+        this.scoreContainer.innerHTML = 'Score: ' + score.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
     }
 }
 
