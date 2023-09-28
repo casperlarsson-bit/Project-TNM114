@@ -45,7 +45,7 @@ class Grid {
             }
         }
 
-        return this.calculateScore(distance)
+        return { score: this.calculateScore(distance), lines: distance }
     }
 
     // Return true if the current row is complete, otherwise false

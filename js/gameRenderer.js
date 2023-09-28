@@ -57,8 +57,9 @@ class GameRenderer {
     }
 
     // Update the displayed score on the page
-    updateScore(score) {
+    updateScore(score, lines) {
         this.scoreContainer.innerHTML = 'Score: ' + score.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+            + '<br />Lines cleared: ' + lines.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
     }
 }
 

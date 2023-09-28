@@ -1,27 +1,42 @@
+/* Import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700;900&display=swap');
 
+/* Reset box model and set font family */
 * {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
+/* Global styles */
 body {
     background-color: #f1f1f1;
 }
 
-#title {
-    text-align: center;
-    width: 80vw;
+/* Container for the main content */
+.main {
+    display: flex;
+    width: 800px;
+    background-color: white;
+    border-radius: 10px;
     margin: 0 auto;
 }
 
-#game-container {
-    background-color: white;
-    border-radius: 10px;
+/* Header section */
+#title {
     display: flex;
-    width: 80vw;
+    justify-content: center;
+    align-items: center;
+    height: 9vh;
+
+    h1 {
+        text-align: center;
+    }
+}
+
+/* Game container */
+#game-container {
     height: 80vh;
-    margin: 0 auto;
+    margin-top: 1vh;
 }
 
 #game-container:after {
@@ -30,6 +45,16 @@ body {
     clear: both;
 }
 
+/* Footer section */
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    margin-top: 1vh;
+}
+
+/* Column layout */
 .column {
     float: left;
     padding: 10px;
@@ -43,34 +68,72 @@ body {
     width: 40%;
 }
 
+/* Game window */
 #game-window {
     border: 1px solid black;
     height: 100%;
     width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
+/* Right panel container */
+.box-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Individual right panels */
+.right-panels {
+    flex: 1;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    margin-bottom: 10px;
+}
+
+/* Score panel */
 #score {
     background-color: red;
-    width: 100%;
-    height: 30vh;
 }
 
+/* Next piece panel */
 #next-piece {
     background-color: plum;
-    width: 100%;
-    height: 30vh;
 }
 
-#footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border-radius: 10px;
-    width: 80vw;
-    height: 5vh;
-    margin: 0 auto;
-    margin-top: 1vh;
+/* Options panel */
+#options {
+    background-color: orange;
+}
+
+/* Buttons */
+.buttons {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: red;
+    color: #ffffff;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #2980b9;
+    }
+
+    &.active {
+        background-color: #38CF5B;
+    }
+}
+
+/* Media Query for smaller screens */
+@media screen and (max-width: 900px) {
+    .main {
+        width: 100%;
+    }
 }

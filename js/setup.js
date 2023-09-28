@@ -6,8 +6,8 @@ const nextPieceContainer = document.getElementById('next-piece')
 function init() {
     gameWindow.style.width = gameWindow.clientHeight / 2 + 'px'
 
-    nextPieceCanvas.width = nextPieceContainer.clientWidth
-    nextPieceCanvas.height = nextPieceContainer.clientHeight
+    nextPieceCanvas.style.width = nextPieceContainer.clientWidth
+    nextPieceCanvas.style.height = nextPieceContainer.clientHeight
 }
 
 // Update the size of the window if the browser ir resized

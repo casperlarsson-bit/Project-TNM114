@@ -11,6 +11,7 @@ class Game {
         this.gameRenderer = new GameRenderer(this.grid)
 
         this.score = 0
+        this.lines = 0
 
         this.pieces = new Queue()
         this.pieces.enqueue(this.pieceByIndex(getRandomInt(0, 6)))
@@ -18,12 +19,14 @@ class Game {
         this.pieceInterval = PIECE_INTERVAL
         this.lastPieceMoveTime = Date.now() // The time when last piece was moved
 
-        this.addKeyboardListeners()
         this.animationFrameId = null
         this.isGameOver = false // Game over flag
-
-        this.isAiActive = true
+        
+        this.isAiActive = false
+        this.aiButton = document.getElementById('ai-button')
         this.ai = new Ai()
+        
+        this.addKeyboardListeners()
     }
 
     startGameLoop() {
@@ -37,7 +40,7 @@ class Game {
                     this.lastPieceMoveTime = currentTime
                 }
 
-                this.gameRenderer.updateScore(this.score)
+                this.gameRenderer.updateScore(this.score, this.lines)
                 this.gameRenderer.redrawCanvas()
 
                 this.animationFrameId = requestAnimationFrame(gameLoop)
@@ -133,8 +136,9 @@ class Game {
 
     lockCurrentPiece() {
         this.setPieceCells() // Locking the piece essentially sets the cells to 1
-        // Temp
-        this.score += this.grid.clearRows()
+        const clearedRows = this.grid.clearRows()
+        this.score += clearedRows.score
+        this.lines += clearedRows.lines
 
     }
 
@@ -171,9 +175,26 @@ class Game {
         }
     }
 
+    aiButtonClick(event) {
+        if (this.isAiActive) {
+            // Disable AI
+            this.isAiActive = !this.isAiActive
+            this.pieceInterval = PIECE_INTERVAL
+            this.aiButton.classList.remove('active')
+        }
+        else {
+            // Enable AI
+            this.isAiActive = !this.isAiActive
+            this.pieceInterval = 1
+            this.aiButton.classList.add('active')
+
+        }
+    }
+
     // Add event listeners to the document
     addKeyboardListeners() {
         document.addEventListener('keydown', this.handleKeyPress.bind(this))
+        this.aiButton.addEventListener('click', this.aiButtonClick.bind(this))
     }
 
     // Generate a random piece and set it as the current piece
@@ -183,7 +204,6 @@ class Game {
         if (this.isAiActive) {
             this.currentPiece = this.ai.getBestMove(this.grid, this.pieces, this.pieces.head).piece
             this.pieces.dequeue()
-            this.pieceInterval = 1
         }
         else {
             this.currentPiece = this.pieces.dequeue()
