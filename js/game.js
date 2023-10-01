@@ -201,8 +201,13 @@ class Game {
     generatePiece() {
         this.pieces.enqueue(this.pieceByIndex(getRandomInt(0, 6)))
 
+        if (!this.pieces.peek().canMoveDown(this.grid)) {
+            this.gameOver()
+        }
+
         if (this.isAiActive) {
             this.currentPiece = this.ai.getBestMove(this.grid, this.pieces, this.pieces.head).piece
+            while (this.currentPiece.moveDown(this.grid)) { }
             this.pieces.dequeue()
         }
         else {
@@ -210,11 +215,6 @@ class Game {
         }
 
         this.gameRenderer.redrawNextPiece(this.pieces.peek())
-
-        if (!this.currentPiece.canMoveDown(this.grid)) {
-            this.gameOver()
-        }
-
     }
 
     // Get a piece based on the index

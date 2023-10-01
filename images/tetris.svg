@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="72.199997"
+   height="8.1999998"
+   viewBox="-1.1 -1.1 72.2 8.1999992"
+   id="svg146"
+   sodipodi:docname="tetris.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs150" />
+  <sodipodi:namedview
+     id="namedview148"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="10.361759"
+     inkscape:cx="60.269692"
+     inkscape:cy="6.4178295"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg146" />
+  <g
+     transform="translate(0,-1)"
+     id="g18">
+    <rect
+       width="11.8"
+       height="0.5"
+       x="-0.89999998"
+       y="8"
+       class="base"
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt"
+       id="rect2" />
+    <polygon
+       points="0,0 2,0 2,2 0,2 "
+       class="O"
+       transform="translate(4,6)"
+       style="fill:#e2e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon4" />
+    <polygon
+       points="3,2 0,2 0,1 2,1 2,0 3,0 "
+       class="L"
+       transform="rotate(90,1.5,4.5)"
+       style="fill:#e2a936;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon6" />
+    <polygon
+       points="4,1 4,0 0,0 0,1 "
+       class="I"
+       transform="rotate(90,2.5,3.5)"
+       style="fill:#36e2e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon8" />
+    <polygon
+       points="0,0 2,0 2,1 3,1 3,2 1,2 1,1 0,1 "
+       class="Z"
+       transform="translate(5)"
+       style="fill:#e23636;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon10" />
+    <polygon
+       points="1,0 2,0 2,1 3,1 3,2 0,2 0,1 1,1 "
+       class="T"
+       transform="rotate(180,5,1)"
+       style="fill:#a936e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon12" />
+    <polygon
+       points="3,2 0,2 0,0 1,0 1,1 3,1 "
+       class="J"
+       transform="rotate(180,2.5,1.5)"
+       style="fill:#4d84e5;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon14" />
+    <polygon
+       points="1,0 3,0 3,1 2,1 2,2 0,2 0,1 1,1 "
+       class="S"
+       style="fill:#36e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon16" />
+  </g>
+  <g
+     transform="translate(12,-1)"
+     id="g36">
+    <rect
+       width="6.8000002"
+       height="0.5"
+       x="-0.89999998"
+       y="8"
+       class="base"
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt"
+       id="rect20" />
+    <polygon
+       points="4,1 4,0 0,0 0,1 "
+       class="I"
+       transform="translate(1,7)"
+       style="fill:#36e2e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon22" />
+    <polygon
+       points="1,0 2,0 2,1 3,1 3,2 0,2 0,1 1,1 "
+       class="T"
+       transform="rotate(90,-1.5,3.5)"
+       style="fill:#a936e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon24" />
+    <polygon
+       points="1,0 3,0 3,1 2,1 2,2 0,2 0,1 1,1 "
+       class="S"
+       transform="rotate(90,-0.5,3.5)"
+       style="fill:#36e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon26" />
+    <polygon
+       points="3,2 0,2 0,1 2,1 2,0 3,0 "
+       class="L"
+       transform="rotate(180,2.5,2.5)"
+       style="fill:#e2a936;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon28" />
+    <polygon
+       points="0,0 2,0 2,1 3,1 3,2 1,2 1,1 0,1 "
+       class="Z"
+       transform="rotate(90,1,2)"
+       style="fill:#e23636;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon30" />
+    <polygon
+       points="0,0 2,0 2,2 0,2 "
+       class="O"
+       style="fill:#e2e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon32" />
+    <polygon
+       points="3,2 0,2 0,0 1,0 1,1 3,1 "
+       class="J"
+       transform="rotate(180,2.5,1)"
+       style="fill:#4d84e5;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon34" />
+  </g>
+  <g
+     transform="translate(19,-1)"
+     id="g54">
+    <rect
+       width="11.8"
+       height="0.5"
+       x="-0.89999998"
+       y="8"
+       class="base"
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt"
+       id="rect38" />
+    <polygon
+       points="0,0 2,0 2,2 0,2 "
+       class="O"
+       transform="translate(4,6)"
+       style="fill:#e2e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon40" />
+    <polygon
+       points="3,2 0,2 0,1 2,1 2,0 3,0 "
+       class="L"
+       transform="rotate(90,1.5,4.5)"
+       style="fill:#e2a936;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon42" />
+    <polygon
+       points="4,1 4,0 0,0 0,1 "
+       class="I"
+       transform="rotate(90,2.5,3.5)"
+       style="fill:#36e2e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon44" />
+    <polygon
+       points="0,0 2,0 2,1 3,1 3,2 1,2 1,1 0,1 "
+       class="Z"
+       transform="translate(5)"
+       style="fill:#e23636;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon46" />
+    <polygon
+       points="1,0 2,0 2,1 3,1 3,2 0,2 0,1 1,1 "
+       class="T"
+       transform="rotate(180,5,1)"
+       style="fill:#a936e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon48" />
+    <polygon
+       points="3,2 0,2 0,0 1,0 1,1 3,1 "
+       class="J"
+       transform="rotate(180,2.5,1.5)"
+       style="fill:#4d84e5;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon50" />
+    <polygon
+       points="1,0 3,0 3,1 2,1 2,2 0,2 0,1 1,1 "
+       class="S"
+       style="fill:#36e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon52" />
+  </g>
+  <g
+     transform="translate(31,-1)"
+     id="g72">
+    <rect
+       width="6.8000002"
+       height="0.5"
+       x="-0.89999998"
+       y="8"
+       class="base"
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt"
+       id="rect56" />
+    <polygon
+       points="4,1 4,0 0,0 0,1 "
+       class="I"
+       transform="rotate(90,-1.5,2.5)"
+       style="fill:#36e2e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon58" />
+    <polygon
+       points="1,0 2,0 2,1 3,1 3,2 0,2 0,1 1,1 "
+       class="T"
+       transform="rotate(-90,2.5,2.5)"
+       style="fill:#a936e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon60" />
+    <polygon
+       points="0,0 2,0 2,1 3,1 3,2 1,2 1,1 0,1 "
+       class="Z"
+       transform="rotate(90,1,1)"
+       style="fill:#e23636;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon62" />
+    <polygon
+       points="1,0 3,0 3,1 2,1 2,2 0,2 0,1 1,1 "
+       class="S"
+       transform="rotate(90,0,5)"
+       style="fill:#36e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon64" />
+    <polygon
+       points="3,2 0,2 0,1 2,1 2,0 3,0 "
+       class="L"
+       transform="rotate(180,2.5,3)"
+       style="fill:#e2a936;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon66" />
+    <polygon
+       points="0,0 2,0 2,2 0,2 "
+       class="O"
+       transform="translate(3,2)"
+       style="fill:#e2e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon68" />
+    <polygon
+       points="3,2 0,2 0,0 1,0 1,1 3,1 "
+       class="J"
+       transform="rotate(180,2.5,1)"
+       style="fill:#4d84e5;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon70" />
+  </g>
+  <g
+     transform="translate(38,-1)"
+     id="g90">
+    <rect
+       width="7.8000002"
+       height="0.5"
+       x="-0.89999998"
+       y="8"
+       class="base"
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt"
+       id="rect74" />
+    <polygon
+       points="1,0 2,0 2,1 3,1 3,2 0,2 0,1 1,1 "
+       class="T"
+       transform="translate(0,6)"
+       style="fill:#a936e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon76" />
+    <polygon
+       points="0,0 2,0 2,1 3,1 3,2 1,2 1,1 0,1 "
+       class="Z"
+       transform="translate(2,6)"
+       style="fill:#e23636;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon78" />
+    <polygon
+       points="3,2 0,2 0,1 2,1 2,0 3,0 "
+       class="L"
+       transform="rotate(90,0.5,3.5)"
+       style="fill:#e2a936;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon80" />
+    <polygon
+       points="3,2 0,2 0,0 1,0 1,1 3,1 "
+       class="J"
+       transform="rotate(90,1.5,3.5)"
+       style="fill:#4d84e5;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon82" />
+    <polygon
+       points="1,0 3,0 3,1 2,1 2,2 0,2 0,1 1,1 "
+       class="S"
+       transform="translate(3)"
+       style="fill:#36e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon84" />
+    <polygon
+       points="0,0 2,0 2,2 0,2 "
+       class="O"
+       transform="translate(1,1)"
+       style="fill:#e2e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon86" />
+    <polygon
+       points="4,1 4,0 0,0 0,1 "
+       class="I"
+       style="fill:#36e2e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon88" />
+  </g>
+  <g
+     transform="translate(46,-1)"
+     id="g108">
+    <rect
+       width="6.8000002"
+       height="0.5"
+       x="-0.89999998"
+       y="8"
+       class="base"
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt"
+       id="rect92" />
+    <polygon
+       points="3,2 0,2 0,1 2,1 2,0 3,0 "
+       class="L"
+       transform="translate(2,6)"
+       style="fill:#e2a936;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon94" />
+    <polygon
+       points="0,0 2,0 2,1 3,1 3,2 1,2 1,1 0,1 "
+       class="Z"
+       transform="rotate(90,0.5,4.5)"
+       style="fill:#e23636;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon96" />
+    <polygon
+       points="1,0 2,0 2,1 3,1 3,2 0,2 0,1 1,1 "
+       class="T"
+       transform="rotate(180,1.5,4)"
+       style="fill:#a936e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon98" />
+    <polygon
+       points="1,0 3,0 3,1 2,1 2,2 0,2 0,1 1,1 "
+       class="S"
+       transform="translate(2,3)"
+       style="fill:#36e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon100" />
+    <polygon
+       points="3,2 0,2 0,0 1,0 1,1 3,1 "
+       class="J"
+       transform="rotate(-90,2.5,1.5)"
+       style="fill:#4d84e5;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon102" />
+    <polygon
+       points="0,0 2,0 2,2 0,2 "
+       class="O"
+       transform="translate(0,1)"
+       style="fill:#e2e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon104" />
+    <polygon
+       points="4,1 4,0 0,0 0,1 "
+       class="I"
+       transform="translate(1)"
+       style="fill:#36e2e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon106" />
+  </g>
+  <g
+     transform="translate(57,-1)"
+     id="g126">
+    <rect
+       width="6.8000002"
+       height="0.5"
+       x="-0.89999998"
+       y="8"
+       class="base"
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt"
+       id="rect110" />
+    <polygon
+       points="3,2 0,2 0,1 2,1 2,0 3,0 "
+       class="L"
+       transform="rotate(90,0,5)"
+       style="fill:#e2a936;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon112" />
+    <polygon
+       points="0,0 2,0 2,1 3,1 3,2 1,2 1,1 0,1 "
+       class="Z"
+       transform="rotate(90,0.5,3.5)"
+       style="fill:#e23636;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon114" />
+    <polygon
+       points="3,2 0,2 0,0 1,0 1,1 3,1 "
+       class="J"
+       transform="rotate(-90,4,4)"
+       style="fill:#4d84e5;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon116" />
+    <polygon
+       points="1,0 2,0 2,1 3,1 3,2 0,2 0,1 1,1 "
+       class="T"
+       transform="rotate(90,0.5,2.5)"
+       style="fill:#a936e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon118" />
+    <polygon
+       points="4,1 4,0 0,0 0,1 "
+       class="I"
+       transform="rotate(90,1,4)"
+       style="fill:#36e2e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon120" />
+    <polygon
+       points="0,0 2,0 2,2 0,2 "
+       class="O"
+       transform="translate(3,1)"
+       style="fill:#e2e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon122" />
+    <polygon
+       points="1,0 3,0 3,1 2,1 2,2 0,2 0,1 1,1 "
+       class="S"
+       transform="translate(1)"
+       style="fill:#36e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon124" />
+  </g>
+  <g
+     transform="translate(64,-1)"
+     id="g144">
+    <rect
+       width="7.8000002"
+       height="0.5"
+       x="-0.89999998"
+       y="8"
+       class="base"
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt"
+       id="rect128" />
+    <polygon
+       points="1,0 2,0 2,1 3,1 3,2 0,2 0,1 1,1 "
+       class="T"
+       transform="translate(0,6)"
+       style="fill:#a936e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon130" />
+    <polygon
+       points="0,0 2,0 2,1 3,1 3,2 1,2 1,1 0,1 "
+       class="Z"
+       transform="translate(2,6)"
+       style="fill:#e23636;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon132" />
+    <polygon
+       points="3,2 0,2 0,1 2,1 2,0 3,0 "
+       class="L"
+       transform="rotate(90,0.5,3.5)"
+       style="fill:#e2a936;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon134" />
+    <polygon
+       points="3,2 0,2 0,0 1,0 1,1 3,1 "
+       class="J"
+       transform="rotate(90,1.5,3.5)"
+       style="fill:#4d84e5;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon136" />
+    <polygon
+       points="1,0 3,0 3,1 2,1 2,2 0,2 0,1 1,1 "
+       class="S"
+       transform="translate(3)"
+       style="fill:#36e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon138" />
+    <polygon
+       points="0,0 2,0 2,2 0,2 "
+       class="O"
+       transform="translate(1,1)"
+       style="fill:#e2e236;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon140" />
+    <polygon
+       points="4,1 4,0 0,0 0,1 "
+       class="I"
+       style="fill:#36e2e2;stroke:#e8e6e3;stroke-width:0.2px;stroke-linecap:butt"
+       id="polygon142" />
+  </g>
+</svg>

@@ -11,31 +11,32 @@
 </head>
 
 <body>
-    <div class="main" id="title">
-        <h1>Tetris AI</h1>
+    <div class="main box-shadow gif-container" id="title">
+        <img src="./images/tetris.svg" id="title-text">
     </div>
     <div class="main" id="game-container">
-        <div class="column" id="left">
+        <div class="column box-shadow" id="left">
             <div id="game-window">
                 <canvas id="grid-canvas" width="400" height="800"></canvas>
             </div>
         </div>
 
         <div class="box-container column" id="right">
-            <div class="right-panels" id="score">
+            <div class="right-panels box-shadow" id="score">
                 Score: 0
             </div>
-            <div class="right-panels" id="next-piece">
+            <div class="right-panels box-shadow" id="next-piece">
                 Next piece:
-                <canvas id="next-piece-canvas" width="400" height="200"></canvas>
+                <canvas id="next-piece-canvas" width="200" height="200"></canvas>
             </div>
-            <div class="right-panels" id="options">
+            <div class="right-panels box-shadow" id="options">
                 <a href="#" class="buttons" id="ai-button">Run AI</a>
+                <a href="#" class="buttons">Reset</a>
             </div>
         </div>
     </div>
 
-    <div class="main" id="footer">
+    <div class="main box-shadow" id="footer">
         <p>By Casper and Ludvig</p>
     </div>
 
