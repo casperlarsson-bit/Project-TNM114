@@ -207,7 +207,7 @@ class Game {
 
         if (this.isAiActive) {
             this.currentPiece = this.ai.getBestMove(this.grid, this.pieces, this.pieces.head).piece
-            while (this.currentPiece.moveDown(this.grid)) { }
+            // while (this.currentPiece.moveDown(this.grid)) { }
             this.pieces.dequeue()
         }
         else {
